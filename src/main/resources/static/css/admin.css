@@ -1,0 +1,96 @@
+::-webkit-scrollbar{
+	display: none;
+}
+
+*{
+	padding: 0;
+	margin: 0;
+	font-family: "微软雅黑";
+}
+
+html,body{
+	width: 100%;
+	min-width: 300px;
+	height: 100%;
+	background: #cdcdcd;
+}
+
+.nav{
+	position: fixed;
+	z-index: 5;
+	width: 100%;
+	height: 50px;
+	background: black;
+}
+
+.logo{
+	height: 50px;
+	line-height: 50px;
+	font-size: 30px;
+}
+
+.contain{
+	padding: 55px 5px 5px;
+}
+
+.contain-box{
+	padding: 5px;
+	width: 100%;
+}
+
+.body{
+	padding: 15px;
+	overflow: hidden;
+	border-radius: 5px;
+	background: white;
+}
+
+.body h2{
+	padding: 0 0 5px 5px;
+	margin: 0;
+	border-left: 15px solid pink;
+	border-bottom: 5px solid pink;
+}
+
+.body table{
+	width: 100%;
+}
+
+.body tr{
+	color: #5b5b5b;
+}
+
+.body .tr{
+	color: black;
+}
+
+.body tr:hover{
+	color: black;
+	background: #f0f0f0;
+}
+
+.body .tr:hover{
+	color: black;
+	background: none;
+}
+
+.body th{
+	width: 20%;
+	height: 30px;
+	text-align: center;
+	border-bottom: 2px solid white;
+}
+
+.body td{
+	padding: 0 2px;
+	width: 20%;
+	height: 20px;
+	text-align: center;
+	border-top: 2px dashed white;
+}
+
+@media only screen and (max-width: 425px) {
+    .logo{
+    	text-align: center;
+    }
+}

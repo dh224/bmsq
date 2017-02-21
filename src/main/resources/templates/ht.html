@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>后台</title>
+</head>
+<body>
+
+<!--基础html框架-->
+<h1>报名列表</h1>
+<table>
+    <thead>
+    <tr>
+        <th>院系</th>
+        <th>姓名</th>
+        <th>班级</th>
+        <th>学号</th>
+        <th>手机号</th>
+    </tr>
+    </thead>
+    <tbody id="tableList">
+
+    </tbody>
+</table>
+
+<!--插件引用-->
+<script type="text/javascript" src="/js/jquery-3.1.1.js"></script>
+<script type="text/javascript" src="/js/handlebars-1.0.0.beta.6.js"></script>
+
+<!--Handlebars.js模版-->
+<!--Handlebars.js模版放在script标签中，保留了html原有层次结构,模版中要写一些操作语句-->
+<!--id可以用来唯一确定一个模版,type是模版固定的写法-->
+<script id="table-template" type="text/x-handlebars-template">
+    {{#each this}}
+    <tr>
+        <td>{{college}}</td>
+        <td>{{name}}</td>
+        <td>{{classes}}</td>
+        <td>{{number}}</td>
+        <td>{{phone}}</td>
+        <td>
+            {{#with favorite}}
+            {{#each this}}
+            <p>{{this}}</p>
+            {{/each}}
+            {{/with}}
+        </td>
+    </tr>
+    {{/each}}
+
+</script>
+
+
+
+<!--进行数据处理、html构造-->
+<script type="text/javascript">
+    var data = {};
+    $(document).ready(function() {
+        $.ajax({
+            url: "/look",
+            type: "get",
+            success: function (data) {
+                var myTemplate = Handlebars.compile($("#table-template").html());
+                $('#tableList').html(myTemplate(data));
+            }, error: function () {
+                alert("网络连接断开");
+            }
+        });
+
+
+
+        //注册一个Handlebars模版，通过id找到某一个模版，获取模版的html框架
+        //$("#table-template").html()是jquery的语法，不懂的童鞋请恶补。。。
+
+
+        //将json对象用刚刚注册的Handlebars模版封装，得到最终的html，插入到基础table中。
+
+    });
+</script>
+<script type="text/javascript">
+    $("#fengjin").click(function () {
+        var uid = $("#txt").val();
+
+        $.ajax({
+            url: "/fengjin",
+            type: "put",
+            data:{"id":uid} ,
+            success: function (data) {
+                if(data =="true"){
+                    alert("成功!");
+                    window.location.href='http://127.0.0.1:8080/ht';
+                }else {
+                    alert("失败");
+                }
+            }, error: function () {
+                alert("网络连接断开");
+            }
+        });
+
+    });
+    $("#szhuti").click(function () {
+        var uid = $("#txt").val();
+
+        $.ajax({
+            url: "/shanzhuti",
+            type: "PUT",
+            data:{"id":uid} ,
+            success: function () {
+                alert("成功!");
+                window.location.href='http://127.0.0.1:8080/ht';
+            }, error: function () {
+                alert("网络连接断开");
+            }
+        });
+
+    });
+    $("#gaimima").click(function () {
+        var uid = $("#txt").val();
+        var upassword = $("#pas").val();
+
+        $.ajax({
+            url: "/gaimima",
+            type: "put",
+            data:{"id":uid ,"password":upassword} ,
+            success: function (data) {
+                if(data =="true"){
+                    alert("成功!");
+                    window.location.href='http://127.0.0.1:8080/ht';
+                }else {
+                    alert("失败");
+                }
+            }, error: function () {
+                alert("网络连接断开");
+            }
+        });
+
+    });
+    $("#jiefeng").click(function () {
+        var uid = $("#txt").val();
+
+        $.ajax({
+            url: "/jiefeng",
+            type: "put",
+            data:{"id":uid} ,
+            success: function (data) {
+                if(data =="true"){
+                    alert("成功!");
+                    window.location.href='http://127.0.0.1:8080/ht';
+                }else {
+                    alert("失败");
+                }
+            }, error: function () {
+                alert("网络连接断开");
+            }
+        });
+
+    });
+    $("#guanli").click(function () {
+        var uid = $("#txt").val();
+
+        $.ajax({
+            url: "/guanli",
+            type: "put",
+            data:{"id":uid} ,
+            success: function (data) {
+                if(data =="true"){
+                    alert("成功!");
+                    window.location.href='http://127.0.0.1:8080/ht';
+                }else {
+                    alert("失败");
+                }
+            }, error: function () {
+                alert("网络连接断开");
+            }
+        });
+
+    });
+</script>
+</body>
+</html>

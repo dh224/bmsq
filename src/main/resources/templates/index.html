@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="zn-cn"
+      xmlns:th="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>报名</title>
+
+    <!-- Bootstrap -->
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet"/>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <link th:href="@{/css/index.css}" rel="stylesheet"/>
+    <link th:href="@{/css/swiper.min.css}" rel="stylesheet"/>
+  </head>
+  <body>
+  <div id="t-t">
+
+     <div class="aaa"> <span>姓名：</span><span  id="t-name"></span></div>
+      <div class="aaa"> <span>学号：</span><span id="t-id"></span> </div>
+      <div class="aaa"> <span>院系：</span><span id="t-college"></span> </div>
+      <div class="aaa"><span>班级：</span><span id="t-classes"></span> </div>
+      <div class="aaa"> <span>手机号：</span><span id="t-phone"></span> </div>
+      <button id="queding">确定提交</button>
+      <button id="fanhui">返回重新修改</button>
+  </div>
+  <div class="bg"></div>
+    <div class="nav">
+      <div class="container-fluid">
+        <div class="logo">
+          智'徽'钱江
+        </div>
+      </div>
+    </div>
+    <div class="contain">
+      <div class="container-fluid">
+        <div id="div2" class="form">
+        	<div id="div3">
+        		<span class="glyphicon glyphicon-remove"></span>
+        	</div>
+          <div class="form-box">
+            <div class="text-box">
+              <span>姓&nbsp;&nbsp;&nbsp;&nbsp;名</span>
+              <input id="name" type="text"  maxlength="16" />
+                <a href="javascript:void(0)" title="提示" class="warning" id="warn1">*</a>
+            </div>
+          </div>
+          <div class="form-box">
+            <div class="text-box">
+              <span>学&nbsp;&nbsp;&nbsp;&nbsp;号</span>
+              <input id="student-id" type="text" maxlength="16"/>
+                <a href="javascript:void(0)" title="提示" class="warning" id="warn2">*</a>
+            </div>
+          </div>
+          <div class="form-box">
+            <div class="text-box">
+              <span>院&nbsp;&nbsp;&nbsp;&nbsp;系</span>
+              <select name="college" class="college" id="col">
+              	<option>信艺学院</option>
+              	<option>经管学院</option>
+              	<option>建工学院</option>
+              	<option>测市学院</option>
+              	<option>电工学院</option>
+              	<option>国教学院</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-box">
+            <div class="text-box">
+              <span>班&nbsp;&nbsp;&nbsp;&nbsp;级</span>
+              <input id="class" type="text" maxlength="16"/>
+                <a href="javascript:void(0)" title="提示" class="warning" id="warn3">*</a>
+            </div>
+          </div>
+          <div class="form-box">
+            <div class="text-box">
+              <span>手&nbsp;&nbsp;&nbsp;&nbsp;机</span>
+              <input id="phone" type="tel" maxlength="11"  onkeyup="value=value.replace(/[^\d]/g,'')" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))"/>
+                <a href="javascript:void(0)" title="提示" class="warning" id="warn4">*</a>
+            </div>
+          </div>
+          <div class="form-box submit" >
+            <button id="tijiao">提交</button>
+          </div>
+        </div>
+        <div id="div5" class="more">
+        	<div id="div6">
+        		<span class="glyphicon glyphicon-remove"></span>
+        	</div>
+          <p>
+          	&nbsp;&nbsp;&nbsp;&nbsp;
+          	为进一步浓厚学术氛围，营造学术环境，统一管理学校学术活动，学校高层次的学术报告、讲座、会议等学术活动均冠以“钱江论坛”的名称。
+          </p>
+          <p>
+          	&nbsp;&nbsp;&nbsp;&nbsp;
+          	“钱江论坛”的水利指向：钱塘江是浙江的母亲河，钱塘江治理是浙江千百年来治水的主战场，学校学科、科研工作始终以服务水利为己任，以“钱江”指代我校的学科与科研的水利特色。
+          </p>
+          <p>
+          	&nbsp;&nbsp;&nbsp;&nbsp;
+          	“钱江论坛”的精神指向：钱塘江大潮逆流而上的壮阔景观世界闻名，以钱江指代逆流而上、开拓创新的浙江精神和勇力潮头的浙江担当，喻指学校积极开展学术思想大交流、大碰撞，激荡科技创新大潮；
+          </p>
+          <p>
+          	&nbsp;&nbsp;&nbsp;&nbsp;
+          	“钱江论坛”的社会指向：钱塘江孕育了吴越文明，拥有深厚的文化底蕴和历史传承，喻指自然学科与社会学科的交叉与结合；
+          </p>
+          <p>
+          	&nbsp;&nbsp;&nbsp;&nbsp;
+          	“钱江论坛”的区位指向：钱塘江古称“浙江”，学校位于浙江钱塘江畔。
+          </p>
+          <p>
+          	&nbsp;&nbsp;&nbsp;&nbsp;
+          	浙江水利水电学院“钱江论坛”以水利为特色，发扬开拓进取的水利精神、创新、奋进勇立潮头的浙江精神，浓厚学术氛围，开拓思路，解放思想，碰撞火花，激荡科技创新大潮，促进学校学科建设和推动科研水平的提升。
+          </p>
+        </div>
+        <div class="text-bg">
+          <div class="text text1">
+          	<div id="div4" class="title">
+          		<div class="title1">'钱江论坛'</div>
+          		<div class="title2">活动详情</div>
+          		<div class="title3">LOGO设计大赛</div>
+          	</div>
+          	<div class="main-text">
+      		<div class="swiper-container">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide">
+					        <p>
+					        	&nbsp;&nbsp;&nbsp;&nbsp;
+					        	为进一步浓厚学术氛围，营造学术环境，统一管理学校学术活动，学校高层次的学术报告、讲座、会议等学术活动均冠以“钱江论坛”的名称。
+					        </p>
+					        <p>
+					        	&nbsp;&nbsp;&nbsp;&nbsp;
+					        	“钱江论坛”的水利指向：钱塘江是浙江的母亲河，钱塘江治理是浙江千百年来治水的主战场，学校学科、科研工作始终以服务水利为己任，以“钱江”指代我校的学科与科研的水利特色。
+					        </p>
+                </div>
+                <div class="swiper-slide">
+				          <p>
+				          	&nbsp;&nbsp;&nbsp;&nbsp;
+				          	“钱江论坛”的精神指向：钱塘江大潮逆流而上的壮阔景观世界闻名，以钱江指代逆流而上、开拓创新的浙江精神和勇力潮头的浙江担当，喻指学校积极开展学术思想大交流、大碰撞，激荡科技创新大潮；
+				          </p>
+				          <p>
+				          	&nbsp;&nbsp;&nbsp;&nbsp;
+				          	“钱江论坛”的社会指向：钱塘江孕育了吴越文明，拥有深厚的文化底蕴和历史传承，喻指自然学科与社会学科的交叉与结合；
+				          </p>
+                </div>
+                <div class="swiper-slide">
+				          <p>
+				          	&nbsp;&nbsp;&nbsp;&nbsp;
+				          	“钱江论坛”的区位指向：钱塘江古称“浙江”，学校位于浙江钱塘江畔。
+				          </p>
+				          <p>
+				          	&nbsp;&nbsp;&nbsp;&nbsp;
+				          	浙江水利水电学院“钱江论坛”以水利为特色，发扬开拓进取的水利精神、创新、奋进勇立潮头的浙江精神，浓厚学术氛围，开拓思路，解放思想，碰撞火花，激荡科技创新大潮，促进学校学科建设和推动科研水平的提升。
+				          </p>
+                </div>
+              </div>
+							<div class="swiper-pagination"></div>
+             </div>
+          	</div>
+          </div>
+          <div class="text text2">
+          	<button id="div1">我要报名</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="foot">
+      <div class="container-fluid">
+        <div class="copyright">
+          Copyright &copy; 2017
+        </div>
+        <div class="powered">
+          Powered By DXStudio 
+        </div>
+      </div>
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+    <script th:src="@{/js/index.js}"></script>
+    <script th:src="@{/js/swiper.min.js}"></script>
+  <script th:src="@{/js/jquery-1.8.3.min.js}"></script>
+  <script>
+      var swiper = new Swiper('.swiper-container', {
+          pagination: '.swiper-pagination',
+          slidesPerView: 1,
+          paginationClickable: true,
+          spaceBetween: 30,
+          keyboardControl: true,
+          centeredSlides: true,
+          autoplay: 2500,
+          autoplayDisableOnInteraction: false,
+          grabCursor: true,
+      });
+  </script>
+    <script >
+        $("#tijiao").click(function () {
+
+            var name = $("#name").val();
+            var studentid = $("#student-id").val();
+            var college = $("#col").val();
+            var classes = $("#class").val();
+            var phone = $("#phone").val();
+            $("#t-id").text(studentid);
+            $("#t-classes").text(classes);
+            $("#t-name").text(name);
+            $("#t-college").text(college);
+            $("#t-phone").text(phone);
+            var dd=document.getElementById('t-t');
+            dd.style.display='block';
+        });
+        $("#queding").click(function () {
+            var name = $("#name").val();
+            var studentid = $("#student-id").val();
+            var college = $("#col").val();
+            var classes = $("#class").val();
+            var phone = $("#phone").val();
+            $.ajax({
+                url: "/tijiao",
+                type: "get",
+                data:{"name":name,"studentid":studentid,"college":college,"classes":classes,"phone":phone},
+                success: function (data) {
+                    if (data =="true"){
+                        alert("报名成功!!");
+                        window.location.href='http://127.0.0.1:8080/';
+                    }else if(data=="false"){
+                        alert("不要重复报名哦！") ;
+                    }else if(data=="kongbai"){
+                        alert("请把信息填写完整!") ;
+                    }
+                }, error: function () {
+                    alert("网络连接断开");
+                }
+            });
+        });
+        $("#fanhui").click(function () {
+            var dd=document.getElementById('t-t');
+            dd.style.display='none';
+        });
+
+    </script>
+  <script type="text/javascript">
+      $(function ($) {
+          //文本框不允许为空---单个文本触发
+          $("#name").on('blur', function () {
+              var txtName = $("#name").val();
+              if (txtName == "" || txtName == undefined || txtName == null) {
+                  $("#warn1").css({ display: 'block' });
+              }
+              else {
+                  $("#warn1").css({ display: 'none' });
+              }
+          });
+          $("#name").on('focus', function () {
+              $("#warn1").css({ display: 'none' });
+          });
+          //
+          $("#student-id").on('blur', function () {
+              var txtName = $("#student-id").val();
+              if (txtName == "" || txtName == undefined || txtName == null) {
+                  $("#warn2").css({ display: 'block' });
+              }
+              else {
+                  $("#warn2").css({ display: 'none' });
+              }
+          });
+          $("#student-id").on('focus', function () {
+              $("#warn2").css({ display: 'none' });
+          });
+          //
+          $("#class").on('blur', function () {
+              var txtName = $("#class").val();
+              if (txtName == "" || txtName == undefined || txtName == null) {
+                  $("#warn3").css({ display: 'block' });
+              }
+              else {
+                  $("#warn3").css({ display: 'none' });
+              }
+          });
+          $("#class").on('focus', function () {
+              $("#warn3").css({ display: 'none' });
+          });
+          //
+          $("#phone").on('blur', function () {
+              var txtName = $("#phone").val();
+              if (txtName == "" || txtName == undefined || txtName == null) {
+                  $("#warn4").css({ display: 'block' });
+              }
+              else {
+                  $("#warn4").css({ display: 'none' });
+              }
+          });
+          $("#phone").on('focus', function () {
+              $("#warn4").css({ display: 'none' });
+          });
+      });
+  </script>
+  </body>
+</html>
