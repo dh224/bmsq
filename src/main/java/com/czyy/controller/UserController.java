@@ -5,13 +5,21 @@ import com.czyy.WebSecurityConfig;
 import com.czyy.model.User;
 import com.czyy.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ResourceLoader;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.List;
 
 /**
@@ -19,23 +27,73 @@ import java.util.List;
  */
 @Controller
 public class UserController {
+    public static final String ROOT = "C:\\Users\\58365\\IdeaProjects\\abccccccc\\src\\data\\pic";
+
+    private final ResourceLoader resourceLoader;
+
+    @Autowired
+    public UserController(ResourceLoader resourceLoader) {
+        this.resourceLoader = resourceLoader;
+    }
+
     @Autowired
     private UserRepository userRepository ;
-    @GetMapping("/loginGet")
+
+    @GetMapping(value = "/pic/{filename:.+}")
     @ResponseBody
-    public String loginPost(@RequestParam("id") String account,@RequestParam("password")  String password, HttpSession session) {
-        String A = "" ;
-        if (!"123456".equals(password) || !"admin".equals(account)) {
-            A = "密码或账户错误" ;
-            return A;
+    public ResponseEntity<?> getFile(@PathVariable String filename) {
+        try {
+            return ResponseEntity.ok(resourceLoader.getResource("file:" + Paths.get(ROOT, filename).toString()));
+        } catch (Exception e) {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+
+    @PostMapping("/ttttt")
+    public String handleFileUpload(@RequestParam("file") MultipartFile file ,Model model) throws IOException {
+        String filename ="6.jpg";
+        String filepath = ROOT + "/" +filename;
+        // 保存图片
+        File f1 = new File(filepath);
+        if (f1.exists()){
+            f1.delete();
+        }
+        Files.copy(file.getInputStream(), Paths.get(ROOT, filename));
+        model.addAttribute("msg","上传成功！");
+        return "touxiang";
+    }
+
+    @GetMapping("/touxiang")
+    public String sheZhiTouXiang(){
+        return "touxiang";
+    }
+
+
+
+    @PostMapping("/loginGet")
+    public String loginPost(@RequestParam("id") String account, @RequestParam("password")  String password, Model model, HttpSession session) {
+        if (!"admin".equals(account)&&!"123456".equals(password)){
+            model.addAttribute("msgall","用户名和密码错误!!");
+            return "login";
+        }
+        if(!"admin".equals(account)){
+            model.addAttribute("msgid","用户名错误!!");
+            return "login";
+        }else if (!"123456".equals(password)){
+            model.addAttribute("msgpassword","密码错误！！！");
+            return "login";
         }else{
             session.setAttribute(WebSecurityConfig.SESSION_KEY,account);
-            A = "true" ;
-            return A;
+            return "redirect:/ht" ;
+
+
         }
         // 设置session
 
     }
+
+
 
     @GetMapping("/tijiao")
     @ResponseBody

@@ -5,7 +5,7 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <title>报名</title>
+    <title>出错了</title>
 
     <!-- Bootstrap -->
     <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet"/>
@@ -30,34 +30,24 @@
     </div>
 </div>
 <div class="contain">
-    <form method='post' enctype='application/x-www-form-urlencoded' action="/loginGet">
         <div class="login-box">
             <div class="login">
                 <div class="login-inbox">
 
-                    <span class="title">Admin Login</span>
+                    <span class="title">出错了！</span>
 
                 </div>
 
-                    <div class="login-inbox input-box">
-                        <span class="glyphicon glyphicon-user"></span>
-                        <input id="username"  name="id" type="text" placeholder="Username"/>
+                <div class="login-inbox input-box">
+                    <h1>500</h1>
+                    <h2>找不到此页面，请检查！</h2>
+                </div>
 
-                    </div>
-                    <div class="login-inbox input-box">
-                        <span class="glyphicon glyphicon-lock"></span>
-                        <input id="password"  name="password" type="password" placeholder="Password"/>
-                        <label th:if="${msgpassword}" th:text="${msgpassword}" ></label>
-                        <label th:if="${msgid}" th:text="${msgid}"  ></label>
-                        <label th:if="${msgall}" th:text="${msgall}"  ></label>
-
-                    </div>
-                    <div class="login-inbox btn-box">
-                        <button id ="top" type="">Login</button>
-                    </div>
+                <div class="login-inbox btn-box">
+                </div>
             </div>
         </div>
-    </form>
+
 </div>
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
