@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>报名</title>
+
+    <!-- Bootstrap -->
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet"/>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <link th:href="@{/css/admin.css}" rel="stylesheet"/>
+  </head>
+  <body>
+    <div class="nav">
+      <div class="container-fluid">
+        <div    class="logo">
+          智'徽'钱江
+            <img th:src="@{'/pic/6.jpg/'}"/>
+        </div>
+
+      </div>
+    </div>
+    <div class="contain">
+      <div class="contain-box">
+        <div class="body">
+          <h2>报名列表</h2>
+          <table>
+              <thead>
+              <tr class="tr">
+                  <th>院系</th>
+                  <th>姓名</th>
+                  <th>班级</th>
+                  <th>学号</th>
+                  <th>手机号</th>
+              </tr>
+              </thead>
+              <tbody id="tableList">
+
+              </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/jquery-3.1.1.js"></script>
+    <script type="text/javascript" src="js/handlebars-1.0.0.beta.6.js"></script>
+    <script src="js/admin.js"></script>
+<script id="table-template" type="text/x-handlebars-template">
+    {{#each this}}
+    <tr>
+        <td>{{college}}</td>
+        <td>{{name}}</td>
+        <td>{{classes}}</td>
+        <td>{{number}}</td>
+        <td>{{phone}}</td>
+        <td>
+            {{#with favorite}}
+            {{#each this}}
+            <p>{{this}}</p>
+            {{/each}}
+            {{/with}}
+        </td>
+    </tr>
+    {{/each}}
+
+</script>
+
+
+
+<!--进行数据处理、html构造-->
+<script type="text/javascript">
+    var data = {};
+    $(document).ready(function() {
+        $.ajax({
+            url: "/look",
+            type: "get",
+            success: function (data) {
+                var myTemplate = Handlebars.compile($("#table-template").html());
+                $('#tableList').html(myTemplate(data));
+            }, error: function () {
+                alert("网络连接断开");
+            }
+        });
+
+
+
+        //注册一个Handlebars模版，通过id找到某一个模版，获取模版的html框架
+        //$("#table-template").html()是jquery的语法，不懂的童鞋请恶补。。。
+
+
+        //将json对象用刚刚注册的Handlebars模版封装，得到最终的html，插入到基础table中。
+
+    });
+</script>
+<script type="text/javascript">
+    $("#fengjin").click(function () {
+        var uid = $("#txt").val();
+
+        $.ajax({
+            url: "/fengjin",
+            type: "put",
+            data:{"id":uid} ,
+            success: function (data) {
+                if(data =="true"){
+                    alert("成功!");
+                    window.location.href='http://127.0.0.1:8080/ht';
+                }else {
+                    alert("失败");
+                }
+            }, error: function () {
+                alert("网络连接断开");
+            }
+        });
+
+    });
+    $("#szhuti").click(function () {
+        var uid = $("#txt").val();
+
+        $.ajax({
+            url: "/shanzhuti",
+            type: "PUT",
+            data:{"id":uid} ,
+            success: function () {
+                alert("成功!");
+                window.location.href='http://127.0.0.1:8080/ht';
+            }, error: function () {
+                alert("网络连接断开");
+            }
+        });
+
+    });
+    $("#gaimima").click(function () {
+        var uid = $("#txt").val();
+        var upassword = $("#pas").val();
+
+        $.ajax({
+            url: "/gaimima",
+            type: "put",
+            data:{"id":uid ,"password":upassword} ,
+            success: function (data) {
+                if(data =="true"){
+                    alert("成功!");
+                    window.location.href='http://127.0.0.1:8080/ht';
+                }else {
+                    alert("失败");
+                }
+            }, error: function () {
+                alert("网络连接断开");
+            }
+        });
+
+    });
+    $("#jiefeng").click(function () {
+        var uid = $("#txt").val();
+
+        $.ajax({
+            url: "/jiefeng",
+            type: "put",
+            data:{"id":uid} ,
+            success: function (data) {
+                if(data =="true"){
+                    alert("成功!");
+                    window.location.href='http://127.0.0.1:8080/ht';
+                }else {
+                    alert("失败");
+                }
+            }, error: function () {
+                alert("网络连接断开");
+            }
+        });
+
+    });
+    $("#guanli").click(function () {
+        var uid = $("#txt").val();
+
+        $.ajax({
+            url: "/guanli",
+            type: "put",
+            data:{"id":uid} ,
+            success: function (data) {
+                if(data =="true"){
+                    alert("成功!");
+                    window.location.href='http://127.0.0.1:8080/ht';
+                }else {
+                    alert("失败");
+                }
+            }, error: function () {
+                alert("网络连接断开");
+            }
+        });
+
+    });
+</script>
+  </body>
+</html>

@@ -1,0 +1,131 @@
+::-webkit-scrollbar{
+	display: none;
+}
+
+*{
+	padding: 0;
+	margin: 0;
+	font-family: "微软雅黑";
+	outline: none;
+}
+
+html,body{
+	width: 100%;
+	height: 100%;
+	background: pink;
+}
+
+.nav{
+	position: fixed;
+	z-index: 5;
+	width: 100%;
+	height: 50px;
+	background: black;
+}
+
+.logo{
+	height: 50px;
+	line-height: 50px;
+	font-size: 30px;
+}
+
+.contain{
+	width: 100%;
+	height: 100%;
+}
+
+.login-box{
+	position: absolute;
+	top: 50%;
+	left: 0;
+	margin-top: -150px;
+	padding: 15px;
+	width: 100%;
+	height: 300px;
+	text-align: center;
+	border-radius: 5px;
+	overflow: hidden;
+}
+
+.login{
+	margin: auto;
+	width: 100%;
+	max-width: 480px;
+	height: 100%;
+	text-align: left;
+	border-radius: 5px;
+	overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .5);
+}
+
+.login-inbox{
+	padding: 10px 20px;
+	width: 100%;
+	height: 25%;
+	background: white;
+}
+
+.title{
+	width: 100%;
+	height: 100%;
+	border-bottom: 2px dashed black;
+	font-size: 25px;
+	display: block;
+}
+
+.login input{
+	padding-left: 45px;
+	width: 100%;
+	height: 100%;
+	font-size: 16px;
+	border-radius: 5px;
+	border: 2px solid #dddddd;
+}
+
+.input-box{
+	position: relative;
+	padding-top: 15px;
+}
+
+.input-box .glyphicon{
+	position: absolute;
+	top: 25px;
+	left: 35px;
+	font-size: 20px;
+}
+
+.btn-box{
+	padding-bottom: 15px;
+}
+
+.login button{
+	width: 100%;
+	max-width: 120px;
+	height: 100%;
+	font-size: 18px;
+	border: none;
+	border-radius: 5px;
+}
+
+.login button:hover{
+	color: white;
+	background: #3385ff;
+}
+
+@media only screen and (max-width: 425px) {
+    .logo{
+    	text-align: center;
+    }
+}
+
+.bg{
+	position: absolute;
+	top:0;
+	left:0;
+	height:100%;
+	width:100%;
+	background:url(../images/bg-login.jpg) no-repeat;
+	background-size:cover;
+
+}
+
